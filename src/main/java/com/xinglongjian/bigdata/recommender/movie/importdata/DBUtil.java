@@ -1,4 +1,4 @@
-package com.xinglongjian.bigdata.db.importdata;
+package com.xinglongjian.bigdata.recommender.movie.importdata;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ public class DBUtil {
 		String driverClassName = "com.mysql.jdbc.Driver";
 		String url = "jdbc:mysql://localhost/movie";
 		String username = "root";
-		String password = "HUHUI";
+		String password = "";
 		Connection conn = null;
 		try {
 			Class.forName(driverClassName);
