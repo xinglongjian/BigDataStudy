@@ -14,9 +14,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.xinglongjian.bigdata.web.FrontUtils;
-import com.xinglongjian.bigdata.web.SiteUtils;
-import com.xinglongjian.bigdata.web.StudySite;
+import com.xinglongjian.bigdata.web.site.FrontUtils;
+import com.xinglongjian.bigdata.web.site.SiteUtils;
+import com.xinglongjian.bigdata.web.site.StudySite;
 
 /**
  * Handles requests for the application home page.

@@ -29,6 +29,29 @@
 	   <beans:property name="suffix" value=".html"/>
 	</beans:bean>
 	
+	
+	<!-- for pdf Start -->
+	<beans:bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+	   <beans:property name="viewResolvers">
+	     <beans:list>
+	       <beans:ref bean="pdfViewResolver"/>
+	     </beans:list>
+	   </beans:property>
+	</beans:bean>
+	
+	<beans:bean name="pdfViewResolver" class="com.xinglongjian.bigdata.web.customviewresolver.SimpleConfigurableViewResolver">
+	   <beans:property name="views">
+	      <beans:map>
+	        <beans:entry key="pdf" value-ref="pdf"/>
+	        <beans:entry key="excel" value-ref="excel"/>
+	      </beans:map>   
+	   </beans:property>
+	</beans:bean>
+	
+	<beans:bean name="pdf" class="com.xinglongjian.bigdata.web.customview.TestPdfView"/>
+	<beans:bean name="excel" class="com.xinglongjian.bigdata.web.customview.TestExcelView"/>
+	<!-- for pdf End -->
+	
 	<context:component-scan base-package="com.xinglongjian.bigdata" />
 	
 	

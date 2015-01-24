@@ -1,4 +1,4 @@
-package com.xinglongjian.bigdata.web;
+package com.xinglongjian.bigdata.web.site;
 
 import javax.servlet.http.HttpServletRequest;
 

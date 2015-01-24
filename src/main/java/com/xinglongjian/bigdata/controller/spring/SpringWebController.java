@@ -9,9 +9,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.xinglongjian.bigdata.web.FrontUtils;
-import com.xinglongjian.bigdata.web.SiteUtils;
-import com.xinglongjian.bigdata.web.StudySite;
+import com.xinglongjian.bigdata.web.site.FrontUtils;
+import com.xinglongjian.bigdata.web.site.SiteUtils;
+import com.xinglongjian.bigdata.web.site.StudySite;
 
 /**
  * spring web controller
@@ -46,15 +46,19 @@ public class SpringWebController {
 	 */
 	@RequestMapping(value = "/spring/pdf", method = RequestMethod.GET)
 	public String pdf(Locale locale, ModelMap model,HttpServletRequest request) {
-		StudySite site=SiteUtils.getSiteFromRequest(request);
-		FrontUtils.frontData(request, model, site);
-		
-		
-		
-		model.addAttribute("menu","spring");
-		model.addAttribute("ddmenu","springweb");
-		model.addAttribute("submenu","pdf");
-		return "spring/springweb/index";
+		return "pdf";
+	}
+	
+	/**
+	 * 
+	 * @param locale
+	 * @param model
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/spring/excel", method = RequestMethod.GET)
+	public String excel(Locale locale, ModelMap model,HttpServletRequest request) {
+		return "excel";
 	}
 
 }
