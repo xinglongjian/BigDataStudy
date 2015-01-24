@@ -1,4 +1,4 @@
-package com.xinglongjian.bigdata;
+package com.xinglongjian.bigdata.Controller;
 
 import java.text.DateFormat;
 import java.util.Date;

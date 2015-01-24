@@ -1,9 +1,11 @@
 package com.xinglongjian.bigdata.recommender.movie.importdata;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -72,7 +74,10 @@ public class ImportRatings {
 		try {
 			ImportRatings ir=new ImportRatings();
 			ClassLoader cl=ir.getClass().getClassLoader();
-			LineNumberReader lineReader = new LineNumberReader(new FileReader(cl.getResource("movies/ml-1m/rating.dat").getFile()));
+			URL url=cl.getResource("movies/ml-1m/users.dat");
+			String filepath=url.getFile();
+			File file=new File(filepath);
+			LineNumberReader lineReader = new LineNumberReader(new FileReader(file));
 			String line = "";
 			List<Rating> ratingList = new ArrayList<Rating>();
 			while ((line = lineReader.readLine()) != null) {
