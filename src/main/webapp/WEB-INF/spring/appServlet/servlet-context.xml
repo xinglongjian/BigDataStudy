@@ -27,6 +27,7 @@
 	
 	<beans:bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 	   <beans:property name="suffix" value=".html"/>
+	   <beans:property name="order" value="1"/>
 	</beans:bean>
 	
 	
@@ -37,6 +38,14 @@
 	       <beans:ref bean="pdfViewResolver"/>
 	     </beans:list>
 	   </beans:property>
+	     
+	   <beans:property name="defaultViews">
+	      <beans:list>
+	         <beans:ref bean="springjson"/>
+	         <beans:ref bean="springxml"/>
+	      </beans:list>
+	   </beans:property>
+	   <beans:property name="order" value="2"/>
 	</beans:bean>
 	
 	<beans:bean name="pdfViewResolver" class="com.xinglongjian.bigdata.web.customviewresolver.SimpleConfigurableViewResolver">
@@ -50,6 +59,26 @@
 	
 	<beans:bean name="pdf" class="com.xinglongjian.bigdata.web.customview.TestPdfView"/>
 	<beans:bean name="excel" class="com.xinglongjian.bigdata.web.customview.TestExcelView"/>
+	
+	
+	
+	
+	<beans:bean name="springjson" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+	   <beans:property name="modelKeys">
+	      <beans:set>
+	        <beans:value>orders</beans:value>
+	      </beans:set>
+	   </beans:property>
+	</beans:bean>
+	
+	<beans:bean name="springxml" class="org.springframework.web.servlet.view.xml.MarshallingView">
+	  <beans:constructor-arg ref="marshaller"/>
+	  <beans:property name="modelKey">
+	     <beans:value>orders</beans:value>
+	  </beans:property>
+	</beans:bean>
+	
+	<beans:bean name="marshaller" class="org.springframework.oxm.xstream.XStreamMarshaller"/>
 	<!-- for pdf End -->
 	
 	<context:component-scan base-package="com.xinglongjian.bigdata" />
