@@ -37,7 +37,7 @@ public class SpringWebController {
 	public String springmvc(Locale locale, ModelMap model,HttpServletRequest request) {
 		StudySite site=SiteUtils.getSiteFromRequest(request);
 		FrontUtils.frontData(request, model, site);
-		model.addAttribute("menu","spring");
+		model.addAttribute("menu","j2ee");
 		model.addAttribute("ddmenu","springweb");
 		model.addAttribute("submenu","index");
 		return "spring/springweb/index";
@@ -85,7 +85,7 @@ public class SpringWebController {
 		orders.add(new Order("4444", "4444", 14, new Date()));
 		orders.add(new Order("5555", "5555", 15, new Date()));
 		model.addAttribute("orders",orders);
-		model.addAttribute("menu","spring");
+		model.addAttribute("menu","j2ee");
 		model.addAttribute("ddmenu","springweb");
 		model.addAttribute("submenu","order");
 		return "spring/springweb/order";

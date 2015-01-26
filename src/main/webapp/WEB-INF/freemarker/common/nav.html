@@ -12,11 +12,11 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li <#if menu=="home"> class="active"</#if>><a href="${base}/">Home</a></li>
-            <li class="dropdown <#if menu=="spring">active</#if>">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Spring <span class="caret"></span></a>
+            <li class="dropdown <#if menu=="j2ee">active</#if>">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">J2EE <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li <#if ddmenu??&&ddmenu=="springweb">class="active"</#if>><a href="${base}/spring/springweb">SpringWeb</a></li>
-                <li><a href="#">Another action</a></li>
+                <li <#if ddmenu??&&ddmenu=="restful">class="active"</#if>><a href="${base}/restful/">RESTful</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
