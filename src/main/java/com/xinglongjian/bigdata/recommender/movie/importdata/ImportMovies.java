@@ -85,6 +85,7 @@ public class ImportMovies {
 				movieList.add(fillMovie(line));
 			}
 			persist(movieList);
+			System.out.println("Import Finished!");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

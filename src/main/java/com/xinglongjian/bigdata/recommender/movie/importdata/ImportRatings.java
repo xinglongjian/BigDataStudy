@@ -55,6 +55,7 @@ public class ImportRatings {
 				ps.setInt(3, rating.getRating());
 				ps.setInt(4, rating.getTimestamp());
 				ps.addBatch();
+				System.out.println("Rating ID="+rating.getUser_id());
 			}
 
 			ps.executeBatch();
@@ -74,7 +75,7 @@ public class ImportRatings {
 		try {
 			ImportRatings ir=new ImportRatings();
 			ClassLoader cl=ir.getClass().getClassLoader();
-			URL url=cl.getResource("movies/ml-1m/users.dat");
+			URL url=cl.getResource("movies/ml-1m/ratings.dat");
 			String filepath=url.getFile();
 			File file=new File(filepath);
 			LineNumberReader lineReader = new LineNumberReader(new FileReader(file));
@@ -84,6 +85,7 @@ public class ImportRatings {
 				ratingList.add(fillRating(line));
 			}
 			insertRatings(ratingList);
+			System.out.println("Import Finished!");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

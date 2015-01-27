@@ -31,4 +31,15 @@ public class RestfulController {
 		return "restful/index";
 	}
 
+	@RequestMapping(value = "/restfulone/", method = RequestMethod.GET)
+	public String restfulone(Locale locale, ModelMap model,HttpServletRequest request) {
+		StudySite site=SiteUtils.getSiteFromRequest(request);
+		FrontUtils.frontData(request, model, site);
+		
+		
+		model.addAttribute("menu","j2ee");
+		model.addAttribute("ddmenu","restful");
+		model.addAttribute("submenu","restful");
+		return "restful/restfulone";
+	}
 }
