@@ -21,8 +21,12 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>-->
 	
+	<beans:bean name="fmConfiguration" class="freemarker.template.Configuration">
+	    <beans:property name="directoryForTemplateLoading" value="WEB-INF/freemarker"/>
+	</beans:bean>
+	
 	<beans:bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-	   <beans:property name="templateLoaderPath" value="WEB-INF/freemarker"/>
+	   <beans:property name="configuration" ref="fmConfiguration"/>
 	</beans:bean>
 	
 	<beans:bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
@@ -63,7 +67,7 @@
 	
 	
 	
-	<beans:bean name="springjson" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+	<beans:bean name="springjson" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
 	   <beans:property name="modelKeys">
 	      <beans:set>
 	        <beans:value>orders</beans:value>

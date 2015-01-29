@@ -13,33 +13,17 @@ import com.xinglongjian.bigdata.web.site.FrontUtils;
 import com.xinglongjian.bigdata.web.site.SiteUtils;
 import com.xinglongjian.bigdata.web.site.StudySite;
 
-/**
- * Controller for RESTful Examples
- * @author root
- *
- */
 @Controller
-public class RestfulController {
+public class WebSocketController {
 	
-	@RequestMapping(value = "/restful/", method = RequestMethod.GET)
+	@RequestMapping(value = "/websocket/", method = RequestMethod.GET)
 	public String index(Locale locale, ModelMap model,HttpServletRequest request) {
 		StudySite site=SiteUtils.getSiteFromRequest(request);
 		FrontUtils.frontData(request, model, site);
 		model.addAttribute("menu","j2ee");
-		model.addAttribute("ddmenu","restful");
+		model.addAttribute("ddmenu","websocket");
 		model.addAttribute("submenu","index");
-		return "restful/index";
+		return "websocket/index";
 	}
-    
-	@RequestMapping(value = "/restfulone/", method = RequestMethod.GET)
-	public String restfulone(Locale locale, ModelMap model,HttpServletRequest request) {
-		StudySite site=SiteUtils.getSiteFromRequest(request);
-		FrontUtils.frontData(request, model, site);
-		
-		
-		model.addAttribute("menu","j2ee");
-		model.addAttribute("ddmenu","restful");
-		model.addAttribute("submenu","restful");
-		return "restful/restfulone";
-	}
+
 }
