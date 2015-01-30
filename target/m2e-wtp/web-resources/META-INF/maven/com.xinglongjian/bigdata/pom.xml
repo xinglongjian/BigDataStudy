@@ -8,6 +8,7 @@
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
+	
 		<java-version>1.7</java-version>
 		<org.springframework-version>4.1.4.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
@@ -163,33 +164,23 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-websocket</artifactId>
-			<version>4.1.4.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.websocket</groupId>
-			<artifactId>javax.websocket-api</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>4.1.4.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>2.5.0</version>
+			<version>2.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.5.0</version>
+			<version>2.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
-			<version>2.5.0</version>
+			<version>2.3.0</version>
 		</dependency>
 	</dependencies>
     <build>

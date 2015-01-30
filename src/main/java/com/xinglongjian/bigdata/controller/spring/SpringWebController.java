@@ -48,7 +48,7 @@ public class SpringWebController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "/spring/pdf", method = RequestMethod.GET)
+	@RequestMapping(value = "/spring/order.pdf", method = RequestMethod.GET)
 	public String pdf(Locale locale, ModelMap model,HttpServletRequest request) {
 		return "pdf";
 	}
@@ -60,7 +60,7 @@ public class SpringWebController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "/spring/excel", method = RequestMethod.GET)
+	@RequestMapping(value = "/spring/order.xlsx", method = RequestMethod.GET)
 	public String excel(Locale locale, ModelMap model,HttpServletRequest request) {
 		return "excel";
 	}

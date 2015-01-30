@@ -42,13 +42,12 @@
 	       <beans:ref bean="pdfViewResolver"/>
 	     </beans:list>
 	   </beans:property>
-	     
 	   <beans:property name="defaultViews">
 	      <beans:list>
 	         <beans:ref bean="springjson"/>
 	         <beans:ref bean="springxml"/>
 	      </beans:list>
-	   </beans:property>
+	   </beans:property> 
 	   <beans:property name="order" value="2"/>
 	</beans:bean>
 	
