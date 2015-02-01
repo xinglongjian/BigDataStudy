@@ -1,4 +1,4 @@
-package com.xinglongjian.bigdata.recommender;
+package com.xinglongjian.bigdata.recommender.movie;
 /**
  * 
  * @author root
