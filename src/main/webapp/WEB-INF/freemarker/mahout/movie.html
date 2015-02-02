@@ -48,6 +48,15 @@
 										</div>
 									</div>
 									<div class="form-group">
+										<label for="inputEmail3" class="col-sm-2 control-label">Recommender:</label>
+										<div class="col-sm-10">
+											<input type="radio" name="recommenderRadioOptions"
+												id="inlineRadio1" value="GenericUserBased" checked="checked" onclick="recommenderCheck(this)"> UserBased
+											<input type="radio" name="recommenderRadioOptions"
+												id="inlineRadio1" value="GenericItemBased" onclick="recommenderCheck(this)"> ItemBased
+										</div>
+									</div>
+									<div class="form-group">
 										<label for="inputEmail3" class="col-sm-2 control-label">Similarity:</label>
 										<div class="col-sm-10">
 											<input type="radio" name="similarityRadioOptions" id="simPearson" value="PearsonCorrelation" checked="checked"> PearsonCorrelation
@@ -55,20 +64,14 @@
 										    <input type="radio" name="similarityRadioOptions" id="simUncenter" value="UncenteredCosine"> UncenteredCosine
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group" id="userNeigh">
 										<label for="inputEmail3" class="col-sm-2 control-label">Neighborhood:</label>
 										<div class="col-sm-10">
 											<input type="radio" name="neighborhoodRadioOptions" id="neiNearestn" value="NearestNUser" checked="checked"> NearestNUser
 											<input type="radio" name="neighborhoodRadioOptions" id="neiThreshold" value="ThresholdUser"> ThresholdUser
 										</div>
 									</div>
-									<div class="form-group">
-										<label for="inputEmail3" class="col-sm-2 control-label">Recommender:</label>
-										<div class="col-sm-10">
-											<input type="radio" name="recommenderRadioOptions"
-												id="inlineRadio1" value="GenericUserBased" checked="checked"> GenericUserBased
-										</div>
-									</div>
+									
 									<div class="form-group">
 										<div class="col-sm-offset-2 col-sm-10">
 											<button type="button" class="btn btn-default" onclick="getRecommender()">Recommend</button>
@@ -125,6 +128,19 @@
             }  
         });
     } 
+    
+    function recommenderCheck(obj)
+    {
+    	var val=$(obj).val();
+    	if(val=='GenericUserBased')
+    	{
+    		$("#userNeigh").show();
+    	}
+    	else
+    	{
+    		$("#userNeigh").hide();
+    	}
+    }
     </script>
 </body>
 </html>
