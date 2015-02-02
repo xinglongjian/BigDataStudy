@@ -29,16 +29,62 @@
 					<div class="panel-heading">Movies</div>
 					<div class="panel-body">
 						<div class="panel panel-default">
-					     <div class="panel-body">
-						    
-					     </div>
-				        </div>
-				        
-				        <div class="panel panel-default">
-					     <div class="panel-body">
-						
-					     </div>
-				        </div>
+							<div class="panel-body">
+								<form class="form-horizontal" role="form" action="${base}/">
+									<div class="form-group">
+										<label for="inputPassword3" class="col-sm-2 control-label">UserID:</label>
+										<div class="col-sm-10">
+											<select name="userIdSelect" id="userIdSelect" class="form-control">
+												<#list userIds as u>
+												<option value="${u}">ID=${u}</option>
+												</#list>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputPassword3" class="col-sm-2 control-label">Nums:</label>
+										<div class="col-sm-10">
+											<input type="text" name="nums" id="nums" class="form-control" placeholder="Nums" value="3">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputEmail3" class="col-sm-2 control-label">Similarity:</label>
+										<div class="col-sm-10">
+											<input type="radio" name="similarityRadioOptions" id="simPearson" value="PearsonCorrelation" checked="checked"> PearsonCorrelation
+										    <input type="radio" name="similarityRadioOptions" id="simEuclidean" value="EuclideanDistance"> EuclideanDistance
+										    <input type="radio" name="similarityRadioOptions" id="simUncenter" value="UncenteredCosine"> UncenteredCosine
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputEmail3" class="col-sm-2 control-label">Neighborhood:</label>
+										<div class="col-sm-10">
+											<input type="radio" name="neighborhoodRadioOptions" id="neiNearestn" value="NearestNUser" checked="checked"> NearestNUser
+											<input type="radio" name="neighborhoodRadioOptions" id="neiThreshold" value="ThresholdUser"> ThresholdUser
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputEmail3" class="col-sm-2 control-label">Recommender:</label>
+										<div class="col-sm-10">
+											<input type="radio" name="recommenderRadioOptions"
+												id="inlineRadio1" value="GenericUserBased" checked="checked"> GenericUserBased
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-offset-2 col-sm-10">
+											<button type="button" class="btn btn-default" onclick="getRecommender()">Recommend</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+
+						<div class="panel panel-default">
+							<div class="panel-body">
+							  <div id="result">
+							  
+							  </div>
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -54,7 +100,31 @@
 	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 	<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-	<script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	
+	<script
+		src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    function getRecommender() { 
+    	var userId=$("#userIdSelect option:selected").val();
+    	var nums=$("#nums").val();
+    	var similarity=$("input[name='similarityRadioOptions']:checked").val();
+    	var neighborhood=$("input[name='neighborhoodRadioOptions']:checked").val();
+    	var recommender=$("input[name='recommenderRadioOptions']:checked").val();
+        $.ajax( {  
+            type : "get",  
+            url : "${base}/mahout/recommender.json",
+            data: "userId="+userId+"&nums="+nums+"&similarity="+similarity+"&neighborhood="+neighborhood+"&recommender="+recommender,
+            dataType:"json",  
+            success : function(msg) {  
+            	var len=msg.orders.length;
+            	var res="";
+            	for(var i=0;i<len;i++)
+            	{
+            		res +="RecommendedItem[item:" + msg.orders[i].itemID + ", value:" +  msg.orders[i].value + ']'+"<br/>";
+            	}
+            	$("#result").html(res)
+            }  
+        });
+    } 
+    </script>
 </body>
 </html>
