@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.hadoop.mapreduce.Counter;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
 import org.apache.mahout.cf.taste.impl.neighborhood.ThresholdUserNeighborhood;
@@ -36,6 +37,7 @@ public class SampleRecommender {
 		for (RecommendedItem recommendation : recommendations) {
 		  System.out.println(recommendation);
 		}
+		
 	}
 
 }
