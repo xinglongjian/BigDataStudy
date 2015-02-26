@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link href="../resources/css/offcanvas.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<#include "../common/nav.html"> 
+
+ <div class="container">
+      <div class="row row-offcanvas row-offcanvas-right">
+        
+          <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+              <#include "leftmenu.html">
+          </div><!--/.sidebar-offcanvas-->
+        
+        <div class="col-xs-12 col-sm-9">
+          <div class="panel panel-default">
+			  <div class="panel-heading">RMI Test</div>
+			  <div class="panel-body">
+						<div class="row">
+							<div class="col-lg-10 col-offsex-1">
+								<div class="input-group">
+									<input id="msg" name="msg" type="text" class="form-control"> 
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="button" onclick="call()">Call!</button>
+									</span>
+								</div>
+								<!-- /input-group -->
+							</div>
+							<!-- /.col-lg-6 -->
+						</div>
+						<div class="row">
+						   <div class="col-lg-10 col-offsex-1">
+						       <div class="input-group">
+						          <textarea id="msgcontent" cols="80" rows="5">
+						          
+						          </textarea>
+						       </div>
+						   </div>
+						</div>
+						<!-- /.row -->
+					</div>
+				</div>
+        </div><!--/.col-xs-12.col-sm-9-->
+      </div><!--/row-->
+      <hr/>
+      <#include "../common/footer.html"> 
+</div><!--/.container-->
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+function call()
+{
+	$.ajax({
+		type:'GET',
+		url:"call.json",
+		success:function(data){
+			alert(data.orders);
+		}
+	});
+}
+</script>
+</body>
+</html>

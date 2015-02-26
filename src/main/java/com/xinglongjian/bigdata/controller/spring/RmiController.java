@@ -9,9 +9,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.xinglongjian.bigdata.rmi.client.RmiClient;
 import com.xinglongjian.bigdata.web.site.FrontUtils;
 import com.xinglongjian.bigdata.web.site.SiteUtils;
 import com.xinglongjian.bigdata.web.site.StudySite;
+import com.xinglongjian.rmi.RmiCall;
 
 /**
  * Controller for RMI Examples
@@ -28,7 +30,17 @@ public class RmiController {
 		model.addAttribute("menu","j2ee");
 		model.addAttribute("ddmenu","rmi");
 		model.addAttribute("submenu","index");
-		return "restful/index";
+		return "rmitest/index";
+	}
+	
+	@RequestMapping(value = "/rmi/call.json", method = RequestMethod.GET)
+	public String call(Locale locale, ModelMap model,HttpServletRequest request) {
+		RmiClient rc=new RmiClient();
+		rc.init();
+		String s=rc.print();
+		System.out.println(s);
+		model.addAttribute("orders",s);
+		return "order";
 	}
     
 }
