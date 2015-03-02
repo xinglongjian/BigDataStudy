@@ -86,6 +86,19 @@
 	
 	<context:component-scan base-package="com.xinglongjian.bigdata" />
 	
+	<!-- RMI Service start-->
+	<beans:bean name="rmiservice" class="com.xinglongjian.bigdata.rmi.server.RmiService">
 	
+	</beans:bean>
+	
+	<beans:bean name="rmiServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
+	   <beans:property name="serviceName" value="RmiService"/>
+	   <beans:property name="service" ref="rmiservice"/>
+	   <beans:property name="serviceInterface" value="com.xinglongjian.bigdata.rmi.server.IRmiService"/>
+	   <beans:property name="registryPort" value="1199"/>
+	</beans:bean>
+	
+	
+	<!-- RMI Service end-->
 	
 </beans:beans>
