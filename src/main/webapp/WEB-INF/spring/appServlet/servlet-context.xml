@@ -101,4 +101,14 @@
 	
 	<!-- RMI Service end-->
 	
+	<!-- RMI Service client -->
+	 <beans:bean id="rmiServiceClient" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <beans:property name="serviceUrl" value="rmi://localhost:1199/RmiService"/>
+        <beans:property name="serviceInterface" value="com.xinglongjian.bigdata.rmi.server.IRmiService"/>
+    </beans:bean>
+	 
+	 <beans:bean name="rmiSpringClient" class="com.xinglongjian.bigdata.rmi.client.RmiSpringClient">
+	    <beans:property name="rmiService" ref="rmiServiceClient"/>
+	 </beans:bean>
+	
 </beans:beans>

@@ -4,12 +4,16 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.remoting.rmi.RmiProxyFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xinglongjian.bigdata.rmi.client.RmiClient;
+import com.xinglongjian.bigdata.rmi.client.RmiSpringClient;
+import com.xinglongjian.bigdata.rmi.server.IRmiService;
 import com.xinglongjian.bigdata.web.site.FrontUtils;
 import com.xinglongjian.bigdata.web.site.SiteUtils;
 import com.xinglongjian.bigdata.web.site.StudySite;
@@ -33,14 +37,21 @@ public class RmiController {
 		return "rmitest/index";
 	}
 	
+//	@RequestMapping(value = "/rmi/call.json", method = RequestMethod.GET)
+//	public String call(Locale locale, ModelMap model,HttpServletRequest request) {
+//		RmiClient rc=new RmiClient();
+//		rc.init();
+//		String s=rc.print();
+//		System.out.println(s);
+//		model.addAttribute("orders",s);
+//		return "order";
+//	}
 	@RequestMapping(value = "/rmi/call.json", method = RequestMethod.GET)
-	public String call(Locale locale, ModelMap model,HttpServletRequest request) {
-		RmiClient rc=new RmiClient();
-		rc.init();
-		String s=rc.print();
-		System.out.println(s);
-		model.addAttribute("orders",s);
+	public String clientcall(Locale locale, ModelMap model,HttpServletRequest request) {
+		System.out.println(rmiServiceClient.getValues());
+		model.addAttribute("orders",rmiServiceClient.getValues());
 		return "order";
 	}
-    
+	@Autowired
+    public RmiSpringClient rmiServiceClient;
 }
