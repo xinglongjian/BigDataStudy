@@ -1,18 +1,17 @@
 package com.xinglongjian.bigdata.websocket;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.nio.ByteBuffer;
 
 import javax.websocket.CloseReason;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
-import javax.websocket.PongMessage;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
+
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.servlet.DispatcherServlet;
 
 /**
  * Encoders provide a way to convert custom Java objects into WebSocket messages and can be specified via the encoders attribute. 
@@ -31,6 +30,7 @@ public class ChatServer {
 	@OnMessage
 	public void receiveMessage(String message,Session session) 
 	{
+		WebApplicationInitializer d;
 		try {
 			session.getBasicRemote().sendText("Jhon say:"+message);
 		} catch (IOException e) {

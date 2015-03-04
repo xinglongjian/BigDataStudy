@@ -87,11 +87,11 @@
 	<context:component-scan base-package="com.xinglongjian.bigdata" />
 	
 	<!-- RMI Service start-->
-	<beans:bean name="rmiservice" class="com.xinglongjian.bigdata.rmi.server.RmiService">
+	<beans:bean id="rmiservice" class="com.xinglongjian.bigdata.rmi.server.RmiService">
 	
 	</beans:bean>
 	
-	<beans:bean name="rmiServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
+	<beans:bean id="rmiServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
 	   <beans:property name="serviceName" value="RmiService"/>
 	   <beans:property name="service" ref="rmiservice"/>
 	   <beans:property name="serviceInterface" value="com.xinglongjian.bigdata.rmi.server.IRmiService"/>
@@ -101,7 +101,7 @@
 	
 	<!-- RMI Service end-->
 	
-	<!-- RMI Service client -->
+	<!-- RMI Service client
 	 <beans:bean id="rmiServiceClient" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
         <beans:property name="serviceUrl" value="rmi://localhost:1199/RmiService"/>
         <beans:property name="serviceInterface" value="com.xinglongjian.bigdata.rmi.server.IRmiService"/>
@@ -109,6 +109,6 @@
 	 
 	 <beans:bean name="rmiSpringClient" class="com.xinglongjian.bigdata.rmi.client.RmiSpringClient">
 	    <beans:property name="rmiService" ref="rmiServiceClient"/>
-	 </beans:bean>
+	 </beans:bean> -->
 	
 </beans:beans>

@@ -37,21 +37,21 @@ public class RmiController {
 		return "rmitest/index";
 	}
 	
-//	@RequestMapping(value = "/rmi/call.json", method = RequestMethod.GET)
-//	public String call(Locale locale, ModelMap model,HttpServletRequest request) {
-//		RmiClient rc=new RmiClient();
-//		rc.init();
-//		String s=rc.print();
-//		System.out.println(s);
-//		model.addAttribute("orders",s);
-//		return "order";
-//	}
 	@RequestMapping(value = "/rmi/call.json", method = RequestMethod.GET)
-	public String clientcall(Locale locale, ModelMap model,HttpServletRequest request) {
-		System.out.println(rmiServiceClient.getValues());
-		model.addAttribute("orders",rmiServiceClient.getValues());
+	public String call(Locale locale, ModelMap model,HttpServletRequest request) {
+		RmiClient rc=new RmiClient();
+		rc.init();
+		String s=rc.print();
+		System.out.println(s);
+		model.addAttribute("orders",s);
 		return "order";
 	}
-	@Autowired
-    public RmiSpringClient rmiServiceClient;
+//	@RequestMapping(value = "/rmi/call.json", method = RequestMethod.GET)
+//	public String clientcall(Locale locale, ModelMap model,HttpServletRequest request) {
+//		System.out.println(rmiServiceClient.getValues());
+//		model.addAttribute("orders",rmiServiceClient.getValues());
+//		return "order";
+//	}
+//	@Autowired
+//    public RmiSpringClient rmiServiceClient;
 }
