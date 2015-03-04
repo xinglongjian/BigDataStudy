@@ -87,28 +87,33 @@
 	<context:component-scan base-package="com.xinglongjian.bigdata" />
 	
 	<!-- RMI Service start-->
-	<beans:bean id="rmiservice" class="com.xinglongjian.bigdata.rmi.server.RmiService">
+	<beans:bean id="rmiservice" class="com.xinglongjian.remoting.rmi.server.RmiService">
 	
 	</beans:bean>
 	
 	<beans:bean id="rmiServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
 	   <beans:property name="serviceName" value="RmiService"/>
 	   <beans:property name="service" ref="rmiservice"/>
-	   <beans:property name="serviceInterface" value="com.xinglongjian.bigdata.rmi.server.IRmiService"/>
+	   <beans:property name="serviceInterface" value="com.xinglongjian.remoting.rmi.server.IRmiService"/>
 	   <beans:property name="registryPort" value="1199"/>
 	</beans:bean>
-	
-	
 	<!-- RMI Service end-->
 	
-	<!-- RMI Service client
-	 <beans:bean id="rmiServiceClient" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-        <beans:property name="serviceUrl" value="rmi://localhost:1199/RmiService"/>
-        <beans:property name="serviceInterface" value="com.xinglongjian.bigdata.rmi.server.IRmiService"/>
-    </beans:bean>
-	 
-	 <beans:bean name="rmiSpringClient" class="com.xinglongjian.bigdata.rmi.client.RmiSpringClient">
-	    <beans:property name="rmiService" ref="rmiServiceClient"/>
-	 </beans:bean> -->
+	<!-- Hessian Service Start-->
+	<beans:bean id="splitservice" class="com.xinglongjian.remoting.caucho.server.SplitService">
+	</beans:bean>
+	<beans:bean id="hessianServiceExporter" class="org.springframework.remoting.caucho.HessianServiceExporter">
+	    <beans:property name="service" ref="splitservice"/>
+	    <beans:property name="serviceInterface" value="com.xinglongjian.remoting.caucho.server.ISplitService"/>
+	</beans:bean>
+	<beans:bean id="hassianUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	    <beans:property name="urlMap">
+	       <beans:map>
+	         <beans:entry key="/split.service" value-ref="hessianServiceExporter"/>
+	       </beans:map>
+	    </beans:property>
+	</beans:bean>
+	<!-- Hessian Service end-->
+	
 	
 </beans:beans>

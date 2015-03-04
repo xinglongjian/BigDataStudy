@@ -11,12 +11,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.xinglongjian.bigdata.rmi.client.RmiClient;
-import com.xinglongjian.bigdata.rmi.client.RmiSpringClient;
-import com.xinglongjian.bigdata.rmi.server.IRmiService;
 import com.xinglongjian.bigdata.web.site.FrontUtils;
 import com.xinglongjian.bigdata.web.site.SiteUtils;
 import com.xinglongjian.bigdata.web.site.StudySite;
+import com.xinglongjian.remoting.rmi.client.RmiClient;
+import com.xinglongjian.remoting.rmi.client.RmiSpringClient;
+import com.xinglongjian.remoting.rmi.server.IRmiService;
 import com.xinglongjian.rmi.RmiCall;
 
 /**

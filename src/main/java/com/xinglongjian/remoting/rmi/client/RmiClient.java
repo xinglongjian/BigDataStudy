@@ -1,4 +1,4 @@
-package com.xinglongjian.bigdata.rmi.client;
+package com.xinglongjian.remoting.rmi.client;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

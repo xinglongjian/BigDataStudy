@@ -1,6 +1,6 @@
-package com.xinglongjian.bigdata.rmi.client;
+package com.xinglongjian.remoting.rmi.client;
 
-import com.xinglongjian.bigdata.rmi.server.IRmiService;
+import com.xinglongjian.remoting.rmi.server.IRmiService;
 
 public class RmiSpringClient {
 	private IRmiService rmiService;

@@ -1,4 +1,4 @@
-package com.xinglongjian.bigdata.rmi.server;
+package com.xinglongjian.remoting.rmi.server;
 
 public interface IRmiService {
 	
