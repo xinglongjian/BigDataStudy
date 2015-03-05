@@ -109,11 +109,18 @@
 	<beans:bean id="hassianUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 	    <beans:property name="urlMap">
 	       <beans:map>
-	         <beans:entry key="/split.service" value-ref="hessianServiceExporter"/>
+	         <beans:entry key="/hessian.service" value-ref="hessianServiceExporter"/>
+	         <beans:entry key="/barlap.service" value-ref="burlapServiceExporter"/>
 	       </beans:map>
 	    </beans:property>
 	</beans:bean>
 	<!-- Hessian Service end-->
-	
+    
+    <!-- Burlap Service Start -->
+    <beans:bean id="burlapServiceExporter" class="org.springframework.remoting.caucho.BurlapServiceExporter">
+	    <beans:property name="service" ref="splitservice"/>
+	    <beans:property name="serviceInterface" value="com.xinglongjian.remoting.caucho.server.ISplitService"/>
+	</beans:bean>
+    <!-- Burlap Service end -->	
 	
 </beans:beans>
