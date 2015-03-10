@@ -111,6 +111,7 @@
 	       <beans:map>
 	         <beans:entry key="/hessian.service" value-ref="hessianServiceExporter"/>
 	         <beans:entry key="/barlap.service" value-ref="burlapServiceExporter"/>
+	          <beans:entry key="/http.service" value-ref="httpInvokerServiceExporter"/>
 	       </beans:map>
 	    </beans:property>
 	</beans:bean>
@@ -123,4 +124,12 @@
 	</beans:bean>
     <!-- Burlap Service end -->	
 	
+	<!-- HttpInvoker Service Start -->
+	<beans:bean id="httpservice" class="com.xinglongjian.remoting.httpinvoker.server.HttpService">
+	</beans:bean>
+    <beans:bean id="httpInvokerServiceExporter" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+	    <beans:property name="service" ref="httpservice"/>
+	    <beans:property name="serviceInterface" value="com.xinglongjian.remoting.httpinvoker.server.IHttpService"/>
+	</beans:bean>
+    <!-- HttpInvoker Service end -->	
 </beans:beans>
