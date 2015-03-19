@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <beans:bean id="carProductMechine" class="com.xinglongjian.spring.CarProductMechine"/>
+    
+    <beans:bean id="productFactory" class="com.xinglongjian.spring.di.ProductFactory">
+       <beans:property name="productMechine" ref="carProductMechine"/>
+    </beans:bean>
+
+    <!-- aop aspect -->
+    <beans:bean id="atention" class="com.xinglongjian.spring.aop.Atention"/>
+    
+    <aop:config>
+      <aop:aspect ref="atention"> 
+        <aop:pointcut expression="execution(* com.xinglongjian.spring.di.*.produce(..))" id="produce"/><!-- ref a aop pointcut -->
+        <aop:before method="beforeProduce" pointcut-ref="produce"/>
+        <aop:after method="afterProduce" pointcut-ref="produce"/>
+      </aop:aspect>
+    </aop:config>
+
+</beans:beans>
