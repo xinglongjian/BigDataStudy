@@ -16,6 +16,7 @@ public class ConfigMain {
 		IProductFactory pf=ctx.getBean(ProductFactory.class);
 		Product p=pf.produce();
 		System.out.println(p.getName());
+		
 	}
 
 }
